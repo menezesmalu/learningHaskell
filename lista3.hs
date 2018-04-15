@@ -58,9 +58,15 @@ square a = [(x, y) | (x, y)<- grid a a, x /= y]
 {-Defina a função recursiva merge :: Ord a => [a] -> [a] -> [a] que mescla duas
 listas ordenadas em uma única lista ordenada
 > merge [2,5,6] [1,3,4]
-
+-- poderia ter só juntado e dado um quick mas achei assim melhor
 [1,2,3,4,5,6]-}
--- FALTAAAAA
+quicksort :: Ord a => [a] -> [a]
+quicksort [] = []
+quicksort (a:as) =
+    quicksort [y| y<- as, y < a] ++ [a] ++ quicksort [y | y <- as, y >= a]
+
+merge :: Ord a => [a] -> [a] -> [a] 
+merge fst scd =quicksort (fst ++ scd) 
 
 
 {-
