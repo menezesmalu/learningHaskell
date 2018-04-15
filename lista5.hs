@@ -14,22 +14,17 @@ primeiro argumento; caso contrário, retorna False.
 Defina a função testaLista das seguintes maneiras:
 -}
 
--- tentar trocar de int pra a
-teste :: Int -> Bool
-teste a = if a > 0
-          then True
-	      else False
 --Usando recursão
-testaLista :: (Int -> Bool) -> [Int] -> Bool
+testaLista :: (a -> Bool) -> [a] -> Bool
 testaLista f [] = True
 testaLista f (x:xs)
     |f x = testaLista f xs
     |otherwise = False
 
     --Usando as funções map e and
-testaListaMap :: (Int -> Bool) -> [Int] -> Bool
+testaListaMap :: (a -> Bool) -> [a] -> Bool
 testaListaMap f list = and (map f list)
 
 --Usando foldr
-testaListaFoldr :: (Int -> Bool) -> [Int] -> Bool
+testaListaFoldr :: (a -> Bool) -> [a]-> Bool
 testaListaFoldr f list = foldr (&&) True (map f list)
