@@ -10,12 +10,28 @@ sort func [] = []
 sort func (x:xs) = sort func (filter (not .func x) xs)  ++ [x] ++ sort func (filter (func x) xs)
 
 {-
-Crie uma função agrupar :: Eq a => [a] -> [[a]] , que recebe uma lista e devolve uma lista de lista dos elementos iguais
+Crie uma função agrupar :: Eq a => [a] -> [[a]] , que recebe uma 
+lista e devolve uma lista de lista dos elementos iguais
 Exemplo:
 > agrupar "arara"
 ["aaa","rr"]
 FALTAAAAAA
 -}
+deleteAll :: Eq a => [a] -> a -> [a]
+deleteAll [] x = []
+deleteAll (a:as) x = if (x == a)
+                   then deleteAll as x
+                   else (a:deleteAll as x)
+seachAll :: Eq a => [a] -> a -> [a]
+seachAll [] x = []
+seachAll (a:as) x = if (x == a)
+                   then (a:seachAll as x)
+                   else seachAll as x
+        
+agrupar :: Eq a => [a] -> [[a]]
+agrupar [] = [[]]
+agrupar (x:xs) = (( seachAll (x:xs) x ) : (   agrupar(   deleteAll xs x   )   ) ) 
+    --
 
 type Lado = Float
 type Triangulo = (Lado, Lado, Lado)
