@@ -19,7 +19,7 @@ ehPrimo x = x `elem` crivo x [2..x]
 Dados dois pontos num espaço tridimensional, defina uma função distancia e um tipo 
 Ponto de tal forma que a função calcule a distância entre dois pontos passados como parâmetros. 
 A função tem tipo Ponto -> Ponto -> Double.
-> distancia (1.0,2.0,3.0) (2.0,3.0,4.0)
+> distancia (Ponto (1.0,2.0,3.0)) (Ponto (2.0,3.0,4.0))
 1.7320508075688772
 -}
 data Ponto = Ponto (Double, Double, Double)
@@ -36,14 +36,16 @@ sumsqrt = sum [x+y| x<- quadrados, y <- sumList]
 
 {-
 Suponha que uma grade de coordenadas de tamanho m x n is dada por uma lista de todos 
-os pares (x,y) tal que 0⩽x⩽m e 0⩽y⩽n. Usando compreensão de lista, defina a função 
-grid:: Int -> Int -> [(Int, Int)] que retorna uma grade de um dado tamanho. Por exemplo,
+os pares (x,y) tal que 0⩽x⩽m e 0⩽y⩽n. 
+Usando compreensão de lista, defina a função grid:: Int -> Int -> [(Int, Int)] que 
+retorna uma grade de um dado tamanho. Por exemplo,
 > grid 1 2
 [ (0,0) , (0,1), (0,2), (1,0), (1,1), (1,2)]
 -}
 
 grid :: Int -> Int -> [(Int, Int)]
 grid m n = [(a, b)| a<- [0..m], b <- [0..n] ]
+
 {-
 Usando compreensão de lista e a função grid definida acima, defina a função 
 square :: Int -> [(Int, Int)] que retorna as coordenadas do quadrado de tamanho n, 
@@ -55,10 +57,9 @@ excluindo a diagonal de (0,0) a (n,n). Por exemplo,
 square :: Int -> [(Int, Int)]
 square a = [(x, y) | (x, y)<- grid a a, x /= y]
 
-{-Defina a função recursiva merge :: Ord a => [a] -> [a] -> [a] que mescla duas
-listas ordenadas em uma única lista ordenada
+{-Defina a função recursiva merge :: Ord a => [a] -> [a] -> [a] 
+que mescla duas listas ordenadas em uma única lista ordenada
 > merge [2,5,6] [1,3,4]
--- poderia ter só juntado e dado um quick mas achei assim melhor
 [1,2,3,4,5,6]-}
 quicksort :: Ord a => [a] -> [a]
 quicksort [] = []
@@ -67,7 +68,6 @@ quicksort (a:as) =
 
 merge :: Ord a => [a] -> [a] -> [a] 
 merge fst scd =quicksort (fst ++ scd) 
-
 
 {-
 Defina e implemente a função aplicaFuncoes :: [Int->Int] -> [Int] -> [[Int]]que recebe uma
