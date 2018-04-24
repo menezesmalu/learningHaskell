@@ -15,7 +15,6 @@ lista e devolve uma lista de lista dos elementos iguais
 Exemplo:
 > agrupar "arara"
 ["aaa","rr"]
-FALTAAAAAA
 -}
 deleteAll :: Eq a => [a] -> a -> [a]
 deleteAll [] x = []
@@ -50,8 +49,11 @@ uma lista de funções binárias e uma lista de valores. O funcionamento de f
 tal que aplica cada função a um respectivo elemento da lista de valores e retorna 
 uma lista de funções parcialmente aplicadas. Dê alguns exemplos de entrada e respectiva
 saída para functions.
-FALTAAAAAA
 -}
+functions :: [(a -> a -> a)] -> [a] -> [(a -> a)]
+functions [] _ = []
+functions _ [] = []
+functions (f:fs) (x:xs) = [(f x)] ++ functions fs xs 
 
 {-
 Considere uma lista de nomes completos de pessoas, escreva uma função que retorne a lista
