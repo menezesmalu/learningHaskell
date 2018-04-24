@@ -34,6 +34,12 @@ nAnd2 True True = False
 nAnd2 True False = True
 nAnd2 False _ = True
 
+nAnd3 :: Bool -> Bool -> Bool
+nAnd3 True True = False
+nAnd3 _ _ = True
+
+
+
 {- 4) Defina uma função que converte letras minúsculas em maiúsculas e retorna caracteres não
 modificadas no caso de maiúsculos -}
 
