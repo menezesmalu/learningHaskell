@@ -12,7 +12,7 @@ fa (x:y:xs)
     |otherwise = fa(y:xs)
 {-(b) Apresente uma solu¸c˜ao com compreens˜ao de lista, mas que n˜ao tenha recurs˜ao-}
 fb :: [Int] -> [Int]
-fb list = [x| x<- list]
+fb (a:as) = [x| (x,y) <- zip(a:as) as, x==y]
 
 {-2. Defina uma fun¸c˜ao g ::[ Int] −> Bool que verifica que todo elemento de uma lista que 
 est´a entre 10 e 100 (inclusive) ´e par. Utilize as fun¸c oes map, filter e foldr.-}
