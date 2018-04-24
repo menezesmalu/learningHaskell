@@ -7,7 +7,7 @@ e uma lista, e ordena a lista de acordo com a função.
 
 sort :: (a -> a -> Bool) -> [a] -> [a]
 sort func [] = []
-sort func (x:xs) = sort func (filter (not .func x) xs)  ++ [x] ++ sort func (filter (func x) xs)
+sort func (x:xs) = sort func (filter (not . func x) xs)  ++ [x] ++ sort func (filter (func x) xs)
 
 {-
 Crie uma função agrupar :: Eq a => [a] -> [[a]] , que recebe uma 
@@ -30,7 +30,6 @@ seachAll (a:as) x = if (x == a)
 agrupar :: Eq a => [a] -> [[a]]
 agrupar [] = [[]]
 agrupar (x:xs) = (( seachAll (x:xs) x ) : (   agrupar(   deleteAll xs x   )   ) ) 
-    --
 
 type Lado = Float
 type Triangulo = (Lado, Lado, Lado)
@@ -41,7 +40,7 @@ heron :: Triangulo -> Float
 heron (a, b, c) = sqrt (( (a+b+c)/2)  * (((a+b+c)/2) - a)* (((a+b+c)/2) - b)*  (((a+b+c)/2) - c))
 
 sumAreas :: [Triangulo] -> Float
-sumAreas list = foldr1 (+) [heron x | x<-list]
+sumAreas list = foldr1 (+) (map heron list)
 
 {-
 Implemente uma função functions :: [(a -> a -> a)] -> [a] -> [(a -> a)] que recebe 
