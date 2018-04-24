@@ -52,6 +52,9 @@ emprestar :: BancoDados -> Pessoa -> Livro -> BancoDados
 emprestar [] p l = [(p, l)]
 emprestar (b:bs) p l = b: emprestar bs p l
 
+emprestar2 :: BancoDados -> Pessoa -> Livro -> BancoDados
+emprestar2 list p l = [(p,l)] ++ list
+
 devolver :: BancoDados -> Pessoa -> Livro -> BancoDados
 devolver [] p l = []
 devolver (b:bs) p l
