@@ -13,7 +13,7 @@ crivo lim (x:xs)
     
 
 ehPrimo :: Int -> Bool
-ehPrimo x = x `elem` crivo x [2..(x+1)]
+ehPrimo x = x `elem` crivo x [2..x]
 
 {-
 Dados dois pontos num espaço tridimensional, defina uma função distancia e um tipo 
