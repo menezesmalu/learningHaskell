@@ -1,7 +1,6 @@
 type Pessoa = String
 type Livro = String
 type BancoDados = [(Pessoa, Livro)]
-
  
 livrosCompressao :: BancoDados -> Pessoa -> [Livro]
 livrosCompressao banco p = [livro | (pessoa, livro) <- banco, pessoa == p]
@@ -35,6 +34,9 @@ emprestadoLista banco l = [True | (pessoa, livro) <- banco, livro == l]
 
 emprestadoCompressao :: BancoDados -> Livro -> Bool
 emprestadoCompressao banco l = head (emprestadoLista banco l)
+
+emprestadoCompressao2 :: BancoDados -> Livro -> Bool
+emprestadoCompressao2 banco l = foldr (||) False (emprestadoLista banco l)
 -- [("Joao","Software Abstractions"), ("Andre","Programming in Haskell"), ("Fernando","Introduction to Programming with Python"), ("Fernando","Programming in Haskell")] "Programming in Haskell"
 
 qtdeEmprestimos :: BancoDados -> Pessoa -> Int
