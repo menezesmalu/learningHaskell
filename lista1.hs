@@ -38,14 +38,17 @@ nAnd3 :: Bool -> Bool -> Bool
 nAnd3 True True = False
 nAnd3 _ _ = True
 
-
-
 {- 4) Defina uma função que converte letras minúsculas em maiúsculas e retorna caracteres não
 modificadas no caso de maiúsculos -}
 
 convChar :: Char -> Char
 convChar c = toUpper c
 
+convChar2 :: Char -> Char
+convChar2 c
+    | (fromEnum 'a' <= fromEnum c) && (fromEnum c <= fromEnum 'z') = toEnum ((fromEnum c - fromEnum 'a') + fromEnum 'A')
+    | otherwise = c 
+    
 {- 5)Defina a função charToNum :: Char -> Int que converte um dígito como '8' no inteiro 8, por exemplo -}
 charToInt :: Char -> Int
 charToInt c = fromEnum c - fromEnum '0'
